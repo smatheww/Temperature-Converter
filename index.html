@@ -13,13 +13,14 @@
     <div class="container">
       <nav>
         <img src="images/logo.webp" class="logo">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Sevices</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Contact</a></li>
+        <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fas fa-times" onclick="closemenu()"></i>
         </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i>
       </nav>  
       <div class="header-text">
         <p>Software Developer</p>
@@ -36,9 +37,11 @@
             </div>
             <div class="about-col-2">
                 <h1 class="sub-title">About Me</h1>
-                <p>You're welcome! I'm glad to hear that the suggestions worked out for you.
-                    If you have any more questions or need further assistance with your website, feel free to ask. 
-                    Happy coding!</p>
+                <p>Grounded and solution-oriented Computer Science Student with a keen interest in cybersecurity. Armed with a Google Cybersecurity Certificate, I am adept at securing digital landscapes while constantly seeking innovative solutions to contemporary challenges. 
+                    I have successfully crafted diverse applications, showcasing my proficiency in multiple programming languages. From the versatility of Python to the robustness of C++, the creativity embedded in CSS and HTML, and the functionality of Java, my projects reflect a commitment to continuous learning and a drive for excellence.
+                    Experienced in collaborative development through Git/GitHub, I thrive in team environments. I believe that diverse perspectives foster innovation, and I actively contribute to creating collaborative and inclusive spaces.
+                    Beyond coding, I am driven by a love for creativity, activity, and social connection. I view technology as a medium to bring about positive change and am excited about the endless possibilities it presents.
+                    Eager to embark on a challenging and rewarding journey in the tech industry, I am actively seeking opportunities that allow me to contribute my skills, learn from seasoned professionals, and make a meaningful impact.</p>
                 
                 <div class="tab-titles">
                     <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
@@ -114,12 +117,13 @@
                 <a href="images/Resume_Steve.pdf" download class="btn btn2">Download Resume</a>
             </div>
             <div class="contact-right">
-                <form action="">
+                <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                     <button type="submit" class="btn btn2">Submit</button>
                 </form>
+                <span id="msg"></span>
             </div>
         </div>
     </div>
@@ -146,6 +150,38 @@
     }
 
 </script>
+
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function closemenu(){
+        sidemenu.style.right = -"-200px";
+    }
+
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzMEWUA-PQ1BzblL7bAXacnMJWvie8BOvc966NNyYEh5kOzAsuNS-HHlDGUsFmZ4A5pVA/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+    })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
 
 </body>
 </html>
