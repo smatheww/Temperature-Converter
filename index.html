@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN link -->
+    <script src="https://kit.fontawesome.com/04ef2d9990.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container">
+      <nav>
+        <img src="images/logo.webp" class="logo">
+        <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <i class="fas fa-times" onclick="closemenu()"></i>
+        </ul>
+        <i class="fas fa-bars" onclick="openmenu()"></i>
+      </nav>  
+      <div class="header-text">
+        <p>Software Developer</p>
+        <h1>Hi, I am <span>Steve</span><br> Mathew from Philadelphia</h1>
+      </div>
+    </div>
+</div>
+<!-----------------------about-------------------------------->>
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/linkedinPic.jpg">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>Grounded and solution-oriented Computer Science Student with a keen interest in cybersecurity. Armed with a Google Cybersecurity Certificate, I am adept at securing digital landscapes while constantly seeking innovative solutions to contemporary challenges. 
+                    I have successfully crafted diverse applications, showcasing my proficiency in multiple programming languages. From the versatility of Python to the robustness of C++, the creativity embedded in CSS and HTML, and the functionality of Java, my projects reflect a commitment to continuous learning and a drive for excellence.
+                    Experienced in collaborative development through Git/GitHub, I thrive in team environments. I believe that diverse perspectives foster innovation, and I actively contribute to creating collaborative and inclusive spaces.
+                    Beyond coding, I am driven by a love for creativity, activity, and social connection. I view technology as a medium to bring about positive change and am excited about the endless possibilities it presents.
+                    Eager to embark on a challenging and rewarding journey in the tech industry, I am actively seeking opportunities that allow me to contribute my skills, learn from seasoned professionals, and make a meaningful impact.</p>
+                
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')"">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')"">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>UI/UX</span><br>Designing Web/App interfaces</li>
+                        <li><span>Web Development</span><br>Web Development</li>
+                        <li><span>App Develpment</span><br>Building Android/OS apps</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>2023 - Current</span><br>Information Services Intern at CHOP</li>
+                        <li><span>2023 - 2023</span><br>Personal Finance Assistant App</li>
+                        <li><span>2020 - 2023</span><br>Personal App/Web Development</li>
+                    </ul>
+                </div><div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2020 - 2024</span><br>Penn State Univerity - Abington</li>
+                        <li><span>Major</span><br>Computer Science</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-----------------------portfolio-------------------------------->
+
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">Projects</h1>
+        <div class="project-list">
+            <div class="project">
+                <img src="images/Personal Finance.jpg">
+                <div class="layer">
+                    <h3>Personal Finance Assistant</h3>
+                    <p>This app is a personal assistant that assists
+                    you with your finances.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="images/Twitter.jpg">
+                <div class="layer">
+                    <h3>Twitter X Clone</h3>
+                    <p>This app is a clone of Twitter.</p>
+                    <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn">See more</a>
+    </div>
+</div>
+
+
+<!------------------------------------------contact---------------------------------------------------->
+
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fas fa-paper-plane"></i> mathewsteve68@gmail.com</p>
+                <p><i class="fas fa-phone-square-alt"></i>+1(267)-367-8062</p>
+                <div class="social-icons">
+                    <a href="www.linkedin.com/in/steve-mathew-176333166"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/smatheww"><i class="fab fa-github"></i></a>
+                </div>
+                <a href="images/Resume_Steve.pdf" download class="btn btn2">Download Resume</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Steve.</p>
+    </div>
+</div>
+
+
+
+<script>
+    var tablinks = document.getElementsByClassName("tab-links")
+    var tabcontents = document.getElementsByClassName("tab-contents")
+    
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab")
+    }
+
+</script>
+
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function closemenu(){
+        sidemenu.style.right = -"-200px";
+    }
+
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzMEWUA-PQ1BzblL7bAXacnMJWvie8BOvc966NNyYEh5kOzAsuNS-HHlDGUsFmZ4A5pVA/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+    })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+</html>
